@@ -62,3 +62,54 @@ if (contactForm && formStatus) {
     // El mensaje se actualizará cuando la página cambie (_next) o se recargue.
   });
 }
+
+// Video de introducción a pantalla completa
+const introOverlay = document.getElementById("introVideoOverlay");
+const introVideo = document.getElementById("introVideo");
+const skipIntro = document.getElementById("skipIntro");
+
+if (introOverlay && introVideo) {
+  document.body.classList.add("intro-lock");
+
+  const endIntro = () => {
+    introOverlay.classList.add("hidden");
+    introOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("intro-lock");
+    introVideo.pause();
+  };
+
+  const tryPlay = () => {
+    const playPromise = introVideo.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {
+        // Autoplay puede estar bloqueado; el usuario puede iniciar con un toque/clic.
+      });
+    }
+  };
+
+  const requestFullscreen = () => {
+    if (introVideo.requestFullscreen) {
+      introVideo.requestFullscreen().catch(() => {});
+    } else if (introVideo.webkitEnterFullscreen) {
+      introVideo.webkitEnterFullscreen();
+    }
+  };
+
+  tryPlay();
+
+  introVideo.addEventListener("ended", endIntro);
+
+  introOverlay.addEventListener("click", () => {
+    requestFullscreen();
+    if (introVideo.paused) {
+      tryPlay();
+    }
+  });
+
+  if (skipIntro) {
+    skipIntro.addEventListener("click", (event) => {
+      event.stopPropagation();
+      endIntro();
+    });
+  }
+}
