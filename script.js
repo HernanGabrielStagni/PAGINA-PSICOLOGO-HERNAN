@@ -67,49 +67,61 @@ if (contactForm && formStatus) {
 const introOverlay = document.getElementById("introVideoOverlay");
 const introVideo = document.getElementById("introVideo");
 const skipIntro = document.getElementById("skipIntro");
+const introKey = "psicored_intro_played_session";
 
 if (introOverlay && introVideo) {
-  document.body.classList.add("intro-lock");
+  const alreadyPlayed = sessionStorage.getItem(introKey) === "true";
 
-  const endIntro = () => {
+  const hideIntro = () => {
     introOverlay.classList.add("hidden");
     introOverlay.setAttribute("aria-hidden", "true");
     document.body.classList.remove("intro-lock");
     introVideo.pause();
   };
 
-  const tryPlay = () => {
-    const playPromise = introVideo.play();
-    if (playPromise && typeof playPromise.catch === "function") {
-      playPromise.catch(() => {
-        // Autoplay puede estar bloqueado; el usuario puede iniciar con un toque/clic.
+  if (alreadyPlayed) {
+    hideIntro();
+  } else {
+    document.body.classList.add("intro-lock");
+
+    const endIntro = () => {
+      sessionStorage.setItem(introKey, "true");
+      hideIntro();
+    };
+
+    const tryPlay = () => {
+      const playPromise = introVideo.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          // Autoplay puede estar bloqueado; el usuario puede iniciar con un toque/clic.
+        });
+      }
+    };
+
+    const requestFullscreen = () => {
+      if (introVideo.requestFullscreen) {
+        introVideo.requestFullscreen().catch(() => {});
+      } else if (introVideo.webkitEnterFullscreen) {
+        introVideo.webkitEnterFullscreen();
+      }
+    };
+
+    tryPlay();
+
+    introVideo.addEventListener("ended", endIntro);
+
+    introOverlay.addEventListener("click", () => {
+      requestFullscreen();
+      if (introVideo.paused) {
+        tryPlay();
+      }
+    });
+
+    if (skipIntro) {
+      skipIntro.addEventListener("click", (event) => {
+        event.stopPropagation();
+        endIntro();
       });
     }
-  };
-
-  const requestFullscreen = () => {
-    if (introVideo.requestFullscreen) {
-      introVideo.requestFullscreen().catch(() => {});
-    } else if (introVideo.webkitEnterFullscreen) {
-      introVideo.webkitEnterFullscreen();
-    }
-  };
-
-  tryPlay();
-
-  introVideo.addEventListener("ended", endIntro);
-
-  introOverlay.addEventListener("click", () => {
-    requestFullscreen();
-    if (introVideo.paused) {
-      tryPlay();
-    }
-  });
-
-  if (skipIntro) {
-    skipIntro.addEventListener("click", (event) => {
-      event.stopPropagation();
-      endIntro();
-    });
   }
 }
