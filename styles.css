@@ -419,8 +419,8 @@ body.dark .menu-toggle {
   border: 1px solid rgba(0, 0, 0, 0.15);
   background: linear-gradient(135deg, rgba(200, 200, 200, 0.8), rgba(150, 150, 150, 0.6));
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -430,7 +430,7 @@ body.dark .menu-toggle {
   color: var(--text-soft);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
   margin-left: auto;
-  font-size: 1.2rem;
+  font-size: 0.84rem;
   transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
@@ -447,7 +447,7 @@ body.dark .theme-toggle {
 }
 
 .theme-toggle span {
-  font-size: 1.2rem;
+  font-size: 0.84rem;
   width: auto;
   text-align: center;
   z-index: 2;
@@ -456,8 +456,8 @@ body.dark .theme-toggle {
 
 /* Botón WhatsApp en header */
 .whatsapp-toggle {
-  width: 46px;
-  height: 46px;
+  width: 41px;
+  height: 41px;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
@@ -471,8 +471,8 @@ body.dark .theme-toggle {
 }
 
 .whatsapp-toggle svg {
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   fill: #ffffff;
 }
 
