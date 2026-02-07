@@ -128,21 +128,18 @@ body.intro-lock {
   font-size: clamp(1.26rem, 3.5vw, 2.1rem);
   color: var(--text-highlight);
   font-weight: bold;
-  text-shadow: 0 6px 12px rgba(255, 140, 0, 0.5);
+  text-shadow: none;
   margin: 0;
   letter-spacing: 2px;
   line-height: 1.2;
 }
 
 .app-subtitle {
-  font-size: clamp(1.65rem, 4.62vw, 2.75rem);
+  font-size: clamp(1.485rem, 4.158vw, 2.475rem);
   color: #ff7a00;
   font-weight: bold;
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.6),
-    0 0 14px rgba(255, 122, 0, 0.7),
-    0 0 28px rgba(255, 122, 0, 0.45);
-  margin: 0.5em 0 0;
+  text-shadow: none;
+  margin: 1.1em 0 0.45em;
   letter-spacing: 2px;
   line-height: 1.2;
   padding: 0;
@@ -161,12 +158,9 @@ body.intro-lock {
 
   /* glow similar al título principal */
 .header {
-  text-shadow:
-    0 2px 0 #ffffff,
-    0 6px 12px rgba(255, 140, 0, 0.95),
-    0 14px 36px rgba(255, 120, 0, 0.7);
-  box-shadow: 0 0 60px rgba(255, 140, 0, 0.45), 0 0 20px rgba(255,120,0,0.25);
-  filter: drop-shadow(0 8px 22px rgba(255,140,0,0.45));
+  text-shadow: none;
+  box-shadow: none;
+  filter: none;
   transition: text-shadow 0.14s ease, box-shadow 0.14s ease, transform 0.12s ease;
   gap: 1rem;
 }
@@ -245,6 +239,7 @@ body.dark .brand-mark {
   white-space: nowrap;
   font-weight: 600;
   letter-spacing: 1px;
+  text-shadow: none;
 }
 
 /* Navegación */
@@ -577,19 +572,11 @@ body:not(.dark) .icon-moon {
   margin-top: 0.5rem;
   font-weight: 800;
   color: var(--green-deep);
-  border-left: 4px solid var(--accent);
-  padding-left: 0.75rem;
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid var(--accent);
-  text-shadow:
-    -1px -1px 0 #ffffff,
-    0 -1px 0 #ffffff,
-    1px -1px 0 #ffffff,
-    -1px 0 0 #ffffff,
-    1px 0 0 #ffffff,
-    -1px 1px 0 #ffffff,
-    0 1px 0 #ffffff,
-    1px 1px 0 #ffffff;
+  border-left: none;
+  padding-left: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  text-shadow: none;
 }
 
 .section h3 {
@@ -699,15 +686,9 @@ body:not(.dark) .icon-moon {
   border-radius: 6px;
   display: inline-block;
   margin: 0.35rem 0 0.6rem 0;
-  /* amarillo intenso tipo título */
-  text-shadow:
-    -1px -1px 0 #ffffff,
-    1px 1px 0 #e7b11c,
-    0 3px 8px rgba(255, 165, 0, 0.98),
-    0 8px 24px rgba(255, 140, 0, 0.95),
-    0 18px 48px rgba(255, 120, 0, 0.65);
-  box-shadow: 0 0 48px rgba(255, 150, 0, 0.38), 0 0 90px rgba(255,125,0,0.22);
-  transition: text-shadow 0.18s ease, box-shadow 0.18s ease, transform 0.14s ease;
+  text-shadow: none;
+  box-shadow: none;
+  transition: transform 0.14s ease;
 }
 
 body.dark .hero-sub {
@@ -719,13 +700,9 @@ body.dark .hero-sub {
 
 .hero-sub:hover {
   transform: translateY(-2px);
-  /* hover: glow aún más intenso */
-  text-shadow:
-    0 2px 0 #ffffff,
-    0 20px 50px rgba(255, 160, 0, 1),
-    0 36px 90px rgba(255, 130, 0, 0.85);
-  box-shadow: 0 0 90px rgba(255, 150, 0, 0.6), 0 0 36px rgba(255,120,0,0.35);
-  filter: drop-shadow(0 14px 40px rgba(255,140,0,0.55));
+  text-shadow: none;
+  box-shadow: none;
+  filter: none;
 }
 
 /* BOTONES */
@@ -1235,15 +1212,7 @@ body:not(.dark) .specialty-card {
 /* TÍTULOS CON SOMBRA NARANJA */
 .h2-orange-shadow {
   color: var(--green-deep);
-  text-shadow:
-    -1px -1px 0 #ffffff,
-    0 -1px 0 #ffffff,
-    1px -1px 0 #ffffff,
-    -1px 0 0 #ffffff,
-    1px 0 0 #ffffff,
-    -1px 1px 0 #ffffff,
-    0 1px 0 #ffffff,
-    1px 1px 0 #ffffff;
+  text-shadow: none;
   letter-spacing: 0.5px;
   font-weight: 800;
   position: relative;
@@ -1252,17 +1221,26 @@ body:not(.dark) .specialty-card {
   margin-bottom: 1.5rem;
 }
 
+.hero-title-outline {
+  -webkit-text-stroke: 0.5px #ffffff;
+  text-shadow:
+    -0.4px -0.4px 0 #ffffff,
+    0 -0.4px 0 #ffffff,
+    0.4px -0.4px 0 #ffffff,
+    -0.4px 0 0 #ffffff,
+    0.4px 0 0 #ffffff,
+    -0.4px 0.4px 0 #ffffff,
+    0 0.4px 0 #ffffff,
+    0.4px 0.4px 0 #ffffff,
+    0 0 3px rgba(255, 255, 255, 0.28) !important;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
 .section h2.h2-orange-shadow {
   color: var(--green-deep);
-  text-shadow:
-    -1px -1px 0 #ffffff,
-    0 -1px 0 #ffffff,
-    1px -1px 0 #ffffff,
-    -1px 0 0 #ffffff,
-    1px 0 0 #ffffff,
-    -1px 1px 0 #ffffff,
-    0 1px 0 #ffffff,
-    1px 1px 0 #ffffff;
+  text-shadow: none;
   letter-spacing: 0.5px;
   font-weight: 800;
   position: relative;
@@ -1297,53 +1275,48 @@ body:not(.dark) .specialty-card {
   display: none;
 }
 
-/* Quitar efectos y sombras en textos informativos y títulos */
+/* Quitar efectos y sombras en textos y botones */
 .app-title,
 .app-subtitle,
+.brand-sub,
 .header,
 .section h2,
 .h2-orange-shadow,
-.hero-text h1.h2-orange-shadow,
-    0 0 6px rgba(255, 255, 255, 0.85),
+.hero-text h1,
+.hero-text h2,
 .hero-text h3,
 .hero-text .hero-kicker,
 .hero-lead,
 .info-label,
 .info-value,
 .section-kicker,
-.section-intro-inline,
-.hero-sub,
-.hero-sub:hover {
-  text-shadow: none !important;
-  filter: none !important;
-}
-
-.hero-sub,
-.hero-sub:hover {
-  box-shadow: none !important;
-}
-
-.section p,
-.section li,
 .section-intro,
 .section-intro-inline,
 .section-header-inline,
-.section-header-inline * {
-  text-shadow: none !important;
-  filter: none !important;
-}
-
+.section-header-inline *,
+.hero-sub,
+.hero-sub:hover,
+.hero-text .nav-number,
 .underline-title {
-  display: inline-block;
-  color: var(--title-color);
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid var(--accent);
-  text-shadow: none !important;
-}
-
-.hero-text .nav-number {
-  color: var(--green-primary);
   text-shadow: none !important;
   filter: none !important;
+}
+
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-primary,
+.btn-outline,
+.btn-whatsapp-icon,
+.whatsapp-toggle,
+.whatsapp-toggle:hover,
+.menu-toggle,
+.menu-toggle:hover,
+.theme-toggle,
+.theme-toggle:hover {
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
 }
 
